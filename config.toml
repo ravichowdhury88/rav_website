@@ -169,7 +169,7 @@ enableEmoji = true
 #  wordpress        = ""
 #  medium           = ""
   # Professional/Business Oriented Communities
-  linkedin         = "example"
+  linkedin         = "rav88"
 #  linkedin_company = "examplebusiness"
 #  foursquare       = ""
 #  xing             = ""
@@ -183,11 +183,11 @@ enableEmoji = true
 #  vimeo            = ""
 #  whatsapp         = "" # WhatsApp Number
     # WeChat and QQ need testing.
-    wechat         = ""
+   # wechat         = ""
 #    qq             = "" # User ID Number
-  instagram        = "example"
+  instagram        = "r_c111"
 #  tumblr           = ""
-  twitter          = "example"
+  twitter          = "techixir"
 #  skype            = ""
 #  snapchat         = ""
 #  pinterest        = "example"
@@ -197,4 +197,4 @@ enableEmoji = true
 #  orcid            = ""
 #  researchgate     = "example"
   # Email
-  email            = "example"
+  email            = "me@ravichowdhury.com"
