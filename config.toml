@@ -91,7 +91,7 @@ relativeURLS = true
 [params.intro]
   header    = "Ravi Chowdhury"
 
-  paragraph = "Research Data Analyst, Northwestern University.
+  paragraph = "Research Data Analyst, Northwestern University."
 
   about     = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tellus lacus, auctor vehicula molestie quis, tempor quis velit. Quisque in quam ac leo efficitur vulputate. Phasellus ullamcorper aliquam sodales. Maecenas sit amet condimentum ipsum. Proin sit amet ligula elit. Mauris."
 
