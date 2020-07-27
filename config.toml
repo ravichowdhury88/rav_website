@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "Hugo Future Imperfect"
+title = "Ravi Chowdhury"
 theme = "hugo-future-imperfect"
 preserveTaxonomyNames = true
 paginate = 3
@@ -10,6 +10,8 @@ pluralizeListTitles = false
 # Set the followings to true as part of your site SEO
 enableRobotsTXT = true
 canonifyURLs = true
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+relativeURLS = true
 
 [params]
   # Sets the meta tag description
@@ -87,9 +89,9 @@ canonifyURLs = true
   # These are optional params related to the sidebar. They are recommended, but not
   # required for proper functionality. HTML is supported within the params.
 [params.intro]
-  header    = "Hugo Future Imperfect"
+  header    = "Ravi Chowdhury"
 
-  paragraph = "Another fine responsive site template by <a href=\"http://html5up.net\">HTML5 UP</a>. Ported by Julio Pescador with some extra goodies <i class='fa fa-hand-peace-o'></i>"
+  paragraph = "Research Data Analyst, Northwestern University.
 
   about     = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tellus lacus, auctor vehicula molestie quis, tempor quis velit. Quisque in quam ac leo efficitur vulputate. Phasellus ullamcorper aliquam sodales. Maecenas sit amet condimentum ipsum. Proin sit amet ligula elit. Mauris."
 
@@ -106,7 +108,7 @@ canonifyURLs = true
 
 [params.postAmount]
 # Sets the number of recent posts to show in the sidebar. The default value is 5.
-    sidebar = 5
+    sidebar = 3
 
 # Sets the menu items in the navigation bar
 # Identifier prepends a Font Awesome icon to the menu item
@@ -125,73 +127,73 @@ canonifyURLs = true
 [[menu.main]]
   name = "Blog"
   url = "/blog/"
-  identifier = "fa fa-newspaper-o"
+  identifier = "fa fa-code"
   weight = 3
 
-[[menu.main]]
-  name = "Itemized"
-  url = "/itemized/"
-  identifier = "fa fa-list"
-  weight = 4
+#[[menu.main]]
+#  name = "Itemized"
+#  url = "/itemized/"
+#  identifier = "fa fa-list"
+# weight = 4
 
 [[menu.main]]
-  name = "Categories"
-  url = "/categories/"
-  identifier = "fa fa-sitemap"
-  weight = 5
+  name = "Projects"
+  url = "/projects/"
+  identifier = "fa fa-folder"
+  weight = 4
 
 [[menu.main]]
   name = "Contact"
   url = "/contact/"
   identifier = "fa fa-envelope-o"
-  weight = 6
+  weight = 5
 
 # Sets Social Media icons to appear and link to your account. Value should be your
 # username unless otherwise noted. These are the icons affected by socialAppearAtTop
 # and socialAppearAtBottom.
 [social]
   # Coding Communities
-  github           = "jpescador/hugo-future-imperfect"
-  gitlab           = ""
+  github           = "ravichowdhury88"
+#  gitlab           = ""
   stackoverflow    = "" # User Number
-  bitbucket        = ""
-  jsfiddle         = ""
-  codepen          = ""
+#  bitbucket        = ""
+#  jsfiddle         = ""
+#  codepen          = ""
   # Visual Art Communities
-  deviantart       = ""
-  flickr           = "example"
-  behance          = ""
-  dribbble         = ""
+#  deviantart       = ""
+#  flickr           = "example"
+#  behance          = ""
+#  dribbble         = ""
   # Publishing Communities
-  wordpress        = ""
-  medium           = ""
+#  wordpress        = ""
+#  medium           = ""
   # Professional/Business Oriented Communities
   linkedin         = "example"
-  linkedin_company = "examplebusiness"
-  foursquare       = ""
-  xing             = ""
-  slideshare       = ""
+#  linkedin_company = "examplebusiness"
+#  foursquare       = ""
+#  xing             = ""
+#  slideshare       = ""
   # Social Networks
-  facebook         = "example"
-  googleplus       = ""
-  reddit           = "example"
-  quora            = ""
+#  facebook         = "example"
+#  googleplus       = ""
+#  reddit           = "example"
+#  quora            = ""
   youtube          = ""
-  vimeo            = ""
-  whatsapp         = "" # WhatsApp Number
+#  vimeo            = ""
+#  whatsapp         = "" # WhatsApp Number
     # WeChat and QQ need testing.
     wechat         = ""
-    qq             = "" # User ID Number
+#    qq             = "" # User ID Number
   instagram        = "example"
-  tumblr           = ""
+#  tumblr           = ""
   twitter          = "example"
-  skype            = ""
-  snapchat         = ""
-  pinterest        = "example"
-  telegram         = "example"
-  vine             = ""
-  googlescholar    = ""
-  orcid            = ""
-  researchgate     = "example"
+#  skype            = ""
+#  snapchat         = ""
+#  pinterest        = "example"
+#  telegram         = "example"
+#  vine             = ""
+#  googlescholar    = ""
+#  orcid            = ""
+#  researchgate     = "example"
   # Email
   email            = "example"
