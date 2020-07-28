@@ -1,0 +1,12 @@
+h1 {
+  font-family: 'Playfair Display', serif;
+  Font-size: 40px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
+
+h2, h3 {
+  font-family: 'Source Sans Pro', Sans-serif;
+  Font-size: 20px;
+}

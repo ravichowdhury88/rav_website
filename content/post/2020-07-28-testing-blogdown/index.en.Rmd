@@ -1,0 +1,49 @@
+---
+title: "Testing Blogdown"
+author: "Ravi Chowdhury"
+date: '2020-07-28'
+categories: blogdown
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+lastmod: '2020-07-28T13:09:30-05:00'
+projects: []
+slug: testing-blogdown
+subtitle: ''
+summary: ''
+tags:
+- blogdown
+- R
+- R Markdown
+authors: []
+---
+
+```{css, echo=FALSE, include=FALSE}
+h1 {
+  font-family: 'Playfair Display', serif;
+  Font-size: 40px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
+
+h2, h3 {
+  font-family: 'Source Sans Pro', Sans-serif;
+  Font-size: 20px;
+}
+
+```
+
+
+## Total Number of patients sent to CDC = 100
+
+<br>
+
+## Total Number of patients matched by CDC = 200
+
+# This is one level
+## This is two level
+### This is three level
+#### This is four level
