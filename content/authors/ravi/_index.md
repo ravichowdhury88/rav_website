@@ -4,15 +4,9 @@ authors:
 bio: I'm a research data analyst, former NIH Principal Investigator, and autism researcher who loves programming.
 education:
   courses:
-  - course: PhD in Developmental Psychology & Quantitative Methods
-    institution: Vanderbilt University
-    year: 2008
-  - course: MSc in Developmental Psychology
-    institution: Vanderbilt University
-    year: 2005
-  - course: BSc in Applied Psychology
-    institution: Georgia Institute of Technology
-    year: 2002
+  - course: MPH in Epidemiology & Biostatistics
+    institution: University of Illinois at Chicago
+    year: 2018
 email: ""
 interests:
 - Knowledge sharing
@@ -23,31 +17,19 @@ interests:
 - Literate programming
 name: Ravi Chowdhury
 organizations:
-- name: RStudio
-  url: https://www.rstudio.com/
-role: Data Scientist & Professional Educator
+- name: Northwestern University
+  url: https://www.northwestern.edu/
+role: Research Data Analyst
 social:
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/apreshill
+  link: https://twitter.com/techixir
 - icon: github
   icon_pack: fab
-  link: https://github.com/apreshill
-- icon: impactstory
-  icon_pack: ai
-  link: https://impactstory.org/u/0000-0002-8082-1890
-- icon: orcid
-  icon_pack: ai
-  link: http://orcid.org/0000-0002-8082-1890
+  link: https://github.com/ravichowdhury88
 - icon: linkedin-in
   icon_pack: fab
-  link: https://www.linkedin.com/in/alisonpresmaneshill/
-- icon: keybase
-  icon_pack: fab
-  link: https://keybase.io/alisonhill
-- icon: google-scholar
-  icon_pack: ai
-  link: https://scholar.google.com/citations?user=yGD9V6MAAAAJ&hl=en
+  link: https://www.linkedin.com/in/rav88/
 superuser: true
 ---
 

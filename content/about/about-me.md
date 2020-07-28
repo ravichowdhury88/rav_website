@@ -52,3 +52,8 @@ subtitle = ""
 
 
 Section for about me
+
+Need to insert all details in brief
+
+
+All of it
