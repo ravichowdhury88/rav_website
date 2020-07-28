@@ -2,7 +2,7 @@
 name = "alison"
 
 # Is theme light or dark?
-dark = true
+light = true
 
 # Primary
 primary = "#008080"
@@ -14,6 +14,6 @@ menu_text_active = "#06805E"
 menu_title = "#172A3A"
 
 # Backgrounds
-background = "#F0F7FA"
-home_section_odd = "#F0F7FA"
-home_section_even = "#F0F7FA"
+background = "#303132"
+home_section_odd = "#303132"
+home_section_even = "#303132"
