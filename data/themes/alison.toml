@@ -5,7 +5,7 @@ name = "alison"
 dark = true
 
 # Primary
-primary = "#06805E"
+primary = "#008080"
 
 # Menu
 menu_primary = "#F0F7FA"
