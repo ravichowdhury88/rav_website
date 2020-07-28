@@ -27,7 +27,8 @@ date_format = "January 2006"
   description = """ 
   * Performed database management of multiple complex databases
   * Maintained data integrity of multiple databases along with establishing data accuracy and validity from a variety of systems
-  * Performed data analysis using various statistical techniques as well as analyzed information from multiple databases and created reports"""
+  * Performed data analysis using various statistical techniques as well as analyzed information from multiple databases and created reports
+  * Assisted in the preparation and delivery of decision support reports for both internal and external customers"""
 
 [[experience]]
   title = "Data Analyst"
