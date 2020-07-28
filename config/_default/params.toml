@@ -22,7 +22,7 @@ font = "alison"
 
 # Choose a font size.
 # Sizes: XS (extra small), S (small), M (medium), L (large - DEFAULT), XL (extra large)
-font_size = "L"
+font_size = "M"
 
 ############################
 ## Basic Info
@@ -81,7 +81,7 @@ edit_page = {repo_url = "https://github.com/gcushen/hugo-academic", content_dir 
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "apresstats@gmail.com"
+email = "me@ravichowdhury.com"
 phone = ""
 
 # Address
@@ -119,7 +119,7 @@ contact_links = [
 sharing_image = "pom-card.png"
 
 # Twitter username (without @). Used when a visitor shares your site on Twitter.
-twitter = "apreshill"
+twitter = "techixir"
 
 ############################
 ## Regional Settings
@@ -266,6 +266,6 @@ plugins_js  = []
 ## Marketing
 ############################
 [marketing]
-  google_analytics = "UA-99209585-1"
+  google_analytics = ""
   google_tag_manager = ""
   
