@@ -12,7 +12,7 @@ lastmod: '2020-07-28T13:09:30-05:00'
 projects: []
 slug: testing-blogdown
 subtitle: ''
-summary: ''
+summary: 'Testing blogdown Layout and Custom CSS'
 tags:
 - blogdown
 - R
@@ -20,7 +20,7 @@ tags:
 authors: []
 ---
 
-```{css, echo=FALSE, include=FALSE}
+```{css}
 h1 {
   font-family: 'Playfair Display', serif;
   Font-size: 40px;
@@ -29,19 +29,22 @@ h1 {
   text-align: center;
 }
 
-h2, h3 {
+h2 {
+  font-family: 'Source Sans Pro', Sans-serif;
+  Font-size: 25px;
+}
+
+h3 {
   font-family: 'Source Sans Pro', Sans-serif;
   Font-size: 20px;
 }
 
+h4 {
+  font-family: 'Source Sans Pro', Sans-serif;
+  Font-size: 15px;
+}
 ```
-
-
-## Total Number of patients sent to CDC = 100
-
-<br>
-
-## Total Number of patients matched by CDC = 200
+Inserting the above code chunk as css will format page according to the css properties.
 
 # This is one level
 ## This is two level

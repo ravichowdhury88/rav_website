@@ -9,12 +9,12 @@ education:
     year: 2018
 email: ""
 interests:
-- Knowledge sharing
-- Mentoring
-- Data analysis
-- Data visualization
+- Data Analysis
+- Reproducible Reporting
+- Data Visualization
 - Machine learning
-- Literate programming
+- Deep Learning and AI
+- Data Management
 name: Ravi Chowdhury
 organizations:
 - name: Northwestern University
@@ -33,4 +33,4 @@ social:
 superuser: true
 ---
 
-I am a Research Data Analyst at Northwestern University. I am an international keynote [speaker](/talks), [award-winning educator](/resume/#accomplishments), and co-author of the book [*blogdown: Creating Websites with R Markdown*](https://bookdown.org/yihui/blogdown/). I love creating [unique platforms](/projects) for sharing knowledge and data-driven insights, from websites to presentations and everything in between. I am known for being a compassionate leader and enthusiastic collaborator, and for making user-facing experiences that engage and delight.
+I am a Research Data Analyst at [*Northwestern University*](https://www.northwestern.edu) and work for the [*Bluhm Cardiovascular Institute at Northwestern Memorial Hospital*](https://nm.org). I like working with R and try to make peoples life easy by making reproducible reports. I love working on data visualization as well as rmarkdown for reporting. I want to post about various projects and tips that I have learned and still learning to help others.
