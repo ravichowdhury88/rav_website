@@ -1,7 +1,7 @@
 ---
 authors:
-- alison
-bio: I'm a developmental psychologist, former NIH Principal Investigator, and autism researcher who loves programming.
+- ravi
+bio: I'm a research data analyst, former NIH Principal Investigator, and autism researcher who loves programming.
 education:
   courses:
   - course: PhD in Developmental Psychology & Quantitative Methods
@@ -52,5 +52,3 @@ superuser: true
 ---
 
 I am a PhD data scientist and professional educator at RStudio. I am an international keynote [speaker](/talks), [award-winning educator](/resume/#accomplishments), and co-author of the book [*blogdown: Creating Websites with R Markdown*](https://bookdown.org/yihui/blogdown/). I love creating [unique platforms](/projects) for sharing knowledge and data-driven insights, from websites to presentations and everything in between. I am known for being a compassionate leader and enthusiastic collaborator, and for making user-facing experiences that engage and delight.
-
-
