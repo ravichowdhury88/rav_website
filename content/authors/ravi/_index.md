@@ -21,7 +21,7 @@ interests:
 - Data visualization
 - Machine learning
 - Literate programming
-name: Alison Hill
+name: Ravi Chowdhury
 organizations:
 - name: RStudio
   url: https://www.rstudio.com/
@@ -51,4 +51,4 @@ social:
 superuser: true
 ---
 
-I am a PhD data scientist and professional educator at RStudio. I am an international keynote [speaker](/talks), [award-winning educator](/resume/#accomplishments), and co-author of the book [*blogdown: Creating Websites with R Markdown*](https://bookdown.org/yihui/blogdown/). I love creating [unique platforms](/projects) for sharing knowledge and data-driven insights, from websites to presentations and everything in between. I am known for being a compassionate leader and enthusiastic collaborator, and for making user-facing experiences that engage and delight.
+I am a Research Data Analyst at Northwestern University. I am an international keynote [speaker](/talks), [award-winning educator](/resume/#accomplishments), and co-author of the book [*blogdown: Creating Websites with R Markdown*](https://bookdown.org/yihui/blogdown/). I love creating [unique platforms](/projects) for sharing knowledge and data-driven insights, from websites to presentations and everything in between. I am known for being a compassionate leader and enthusiastic collaborator, and for making user-facing experiences that engage and delight.
