@@ -83,7 +83,7 @@ Now lets start making reactable, using the reactable package.
 
 reactable(bill_len_df, 
           highlight = TRUE,
-          striped = TRUE,
+          borderless = TRUE,
           theme = reactableTheme(
             color = "hsl(0, 0%, 95%)",
             backgroundColor = "hsl(0, 0%, 10%)",
@@ -97,10 +97,10 @@ reactable(bill_len_df,
           ),
           columns = list(
            mean_bill_length = colDef(
-             name = "Average Bill Length",
+             name = "Average Bill Length (mm)",
              cell = function(value) {
                width <- paste0(value *  100 / max(bill_len_df$mean_bill_length), "%")
-               value <- format(value, big.mark = ",")
+               value <- format(value, big.mark = ",", digits = 4)
                value <- format(value, width = 5, justify = "right")
                bar <- div(
                  class = "bar-chart",
@@ -112,6 +112,9 @@ reactable(bill_len_df,
                )
                div(class = "bar-cell", span(class = "number", value), bar)
              }
+           ),
+           species = colDef(
+             name = "Species"
            )
          )
            )

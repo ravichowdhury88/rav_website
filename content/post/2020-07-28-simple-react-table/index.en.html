@@ -117,7 +117,7 @@ bill_len_df</code></pre>
 </style>
 <pre class="r"><code>reactable(bill_len_df, 
           highlight = TRUE,
-          striped = TRUE,
+          borderless = TRUE,
           theme = reactableTheme(
             color = &quot;hsl(0, 0%, 95%)&quot;,
             backgroundColor = &quot;hsl(0, 0%, 10%)&quot;,
@@ -131,10 +131,10 @@ bill_len_df</code></pre>
           ),
           columns = list(
            mean_bill_length = colDef(
-             name = &quot;Average Bill Length&quot;,
+             name = &quot;Average Bill Length (mm)&quot;,
              cell = function(value) {
                width &lt;- paste0(value *  100 / max(bill_len_df$mean_bill_length), &quot;%&quot;)
-               value &lt;- format(value, big.mark = &quot;,&quot;)
+               value &lt;- format(value, big.mark = &quot;,&quot;, digits = 4)
                value &lt;- format(value, width = 5, justify = &quot;right&quot;)
                bar &lt;- div(
                  class = &quot;bar-chart&quot;,
@@ -146,9 +146,12 @@ bill_len_df</code></pre>
                )
                div(class = &quot;bar-cell&quot;, span(class = &quot;number&quot;, value), bar)
              }
+           ),
+           species = colDef(
+             name = &quot;Species&quot;
            )
          )
            )</code></pre>
 <div id="htmlwidget-1" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"species":["Chinstrap","Gentoo","Adelie"],"mean_bill_length":[48.8338235294118,47.5048780487805,38.7913907284768]},"columns":[{"accessor":"species","name":"species","type":"factor"},{"accessor":"mean_bill_length","name":"Average Bill Length","type":"numeric","cell":[{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":["48.83382"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"100%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]},{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":["47.50488"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"97.2786372547075%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]},{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":["38.79139"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"79.4354976220804%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"theme":{"color":"hsl(0, 0%, 95%)","backgroundColor":"hsl(0, 0%, 10%)","borderColor":"hsl(0, 0%, 16%)","borderWidth":"1px","highlightColor":"rgba(255, 255, 255, 0.1)","style":{"fontFamily":"Work Sans, Helvetica Neue, Helvetica, Arial, sans-serif","fontSize":"15px"}},"dataKey":"f053e82a1c4029e78ccb92d0e2810071"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"species":["Chinstrap","Gentoo","Adelie"],"mean_bill_length":[48.8338235294118,47.5048780487805,38.7913907284768]},"columns":[{"accessor":"species","name":"Species","type":"factor"},{"accessor":"mean_bill_length","name":"Average Bill Length (mm)","type":"numeric","cell":[{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":["48.83"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"100%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]},{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":[" 47.5"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"97.2786372547075%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]},{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":["38.79"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"79.4354976220804%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"borderless":true,"theme":{"color":"hsl(0, 0%, 95%)","backgroundColor":"hsl(0, 0%, 10%)","borderColor":"hsl(0, 0%, 16%)","borderWidth":"1px","highlightColor":"rgba(255, 255, 255, 0.1)","style":{"fontFamily":"Work Sans, Helvetica Neue, Helvetica, Arial, sans-serif","fontSize":"15px"}},"dataKey":"9e60fc0f8610a8d6f313a275f496ee7f"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
