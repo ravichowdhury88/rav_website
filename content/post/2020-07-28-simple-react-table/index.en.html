@@ -1,0 +1,154 @@
+---
+title: Simple React(Table)
+author: Ravi Chowdhury
+date: '2020-07-28'
+slug: simple-react-table
+categories:
+  - post
+tags:
+  - rmarkdown
+  - R
+  - reactable
+  - palmer penguins
+subtitle: ''
+summary: 'Create a simple table using reactable package'
+authors: []
+lastmod: '2020-07-28T14:15:26-05:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+
+---
+
+<script src="/rmarkdown-libs/core-js/shim.min.js"></script>
+<script src="/rmarkdown-libs/react/react.min.js"></script>
+<script src="/rmarkdown-libs/react/react-dom.min.js"></script>
+<script src="/rmarkdown-libs/reactwidget/react-tools.js"></script>
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/reactable-binding/reactable.js"></script>
+
+
+<div id="table" class="section level2">
+<h2>Table</h2>
+<p>Lets take a look at the table and see 10 observations</p>
+<pre class="r"><code>head(penguin, 10)</code></pre>
+<pre><code># # A tibble: 10 x 8
+#    species island bill_length_mm bill_depth_mm flipper_length_~ body_mass_g
+#    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;       &lt;int&gt;
+#  1 Adelie  Torge~           39.1          18.7              181        3750
+#  2 Adelie  Torge~           39.5          17.4              186        3800
+#  3 Adelie  Torge~           40.3          18                195        3250
+#  4 Adelie  Torge~           NA            NA                 NA          NA
+#  5 Adelie  Torge~           36.7          19.3              193        3450
+#  6 Adelie  Torge~           39.3          20.6              190        3650
+#  7 Adelie  Torge~           38.9          17.8              181        3625
+#  8 Adelie  Torge~           39.2          19.6              195        4675
+#  9 Adelie  Torge~           34.1          18.1              193        3475
+# 10 Adelie  Torge~           42            20.2              190        4250
+# # ... with 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+<div id="creating-data-frame" class="section level2">
+<h2>Creating Data Frame</h2>
+<p>Lets group the penguins by species and then find the mean bill length for each species</p>
+<pre class="r"><code>bill_len_df &lt;- penguin %&gt;%
+  group_by(species) %&gt;%
+  summarise(mean_bill_length = mean(bill_length_mm, na.rm = T)) %&gt;%
+  arrange(desc(mean_bill_length))
+
+bill_len_df</code></pre>
+<pre><code># # A tibble: 3 x 2
+#   species   mean_bill_length
+#   &lt;fct&gt;                &lt;dbl&gt;
+# 1 Chinstrap             48.8
+# 2 Gentoo                47.5
+# 3 Adelie                38.8</code></pre>
+</div>
+<div id="creating-reactable" class="section level2">
+<h2>Creating Reactable</h2>
+<p>Now lets start making reactable, using the reactable package.</p>
+<pre class="css"><code>.bar-cell {
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  font-size: 15px;
+  white-space: pre;
+  font-family: Source Code Pro, Consolas, Monaco, monospace;
+  font-weight: 600;
+  color: hsl(0, 0%, 70%)
+}
+
+.bar-chart {
+  flex-grow: 1;
+  margin-left: 6px;
+  height: 22px;
+}
+
+.bar {
+  height: 100%;
+}</code></pre>
+<style type="text/css">
+.bar-cell {
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  font-size: 15px;
+  white-space: pre;
+  font-family: Source Code Pro, Consolas, Monaco, monospace;
+  font-weight: 600;
+  color: hsl(0, 0%, 70%)
+}
+
+.bar-chart {
+  flex-grow: 1;
+  margin-left: 6px;
+  height: 22px;
+}
+
+.bar {
+  height: 100%;
+}
+</style>
+<pre class="r"><code>reactable(bill_len_df, 
+          highlight = TRUE,
+          striped = TRUE,
+          theme = reactableTheme(
+            color = &quot;hsl(0, 0%, 95%)&quot;,
+            backgroundColor = &quot;hsl(0, 0%, 10%)&quot;,
+            borderColor = &quot;hsl(0, 0%, 16%)&quot;,
+            borderWidth = &quot;1px&quot;,
+            highlightColor = &quot;rgba(255, 255, 255, 0.1)&quot;,
+            style = list(
+              fontFamily = &quot;Work Sans, Helvetica Neue, Helvetica, Arial, sans-serif&quot;,
+              fontSize = &quot;15px&quot;
+            )
+          ),
+          columns = list(
+           mean_bill_length = colDef(
+             name = &quot;Average Bill Length&quot;,
+             cell = function(value) {
+               width &lt;- paste0(value *  100 / max(bill_len_df$mean_bill_length), &quot;%&quot;)
+               value &lt;- format(value, big.mark = &quot;,&quot;)
+               value &lt;- format(value, width = 5, justify = &quot;right&quot;)
+               bar &lt;- div(
+                 class = &quot;bar-chart&quot;,
+                 style = list(marginRight = &quot;6px&quot;),
+                 div(
+                   class = &quot;bar&quot;,
+                   style = list(width = width, backgroundColor = &quot;#f61067&quot;)
+                 )
+               )
+               div(class = &quot;bar-cell&quot;, span(class = &quot;number&quot;, value), bar)
+             }
+           )
+         )
+           )</code></pre>
+<div id="htmlwidget-1" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"species":["Chinstrap","Gentoo","Adelie"],"mean_bill_length":[48.8338235294118,47.5048780487805,38.7913907284768]},"columns":[{"accessor":"species","name":"species","type":"factor"},{"accessor":"mean_bill_length","name":"Average Bill Length","type":"numeric","cell":[{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":["48.83382"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"100%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]},{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":["47.50488"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"97.2786372547075%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]},{"name":"div","attribs":{"className":"bar-cell"},"children":[{"name":"span","attribs":{"className":"number"},"children":["38.79139"]},{"name":"div","attribs":{"style":{"marginRight":"6px"},"className":"bar-chart"},"children":[{"name":"div","attribs":{"style":{"width":"79.4354976220804%","backgroundColor":"#f61067"},"className":"bar"},"children":[]}]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"theme":{"color":"hsl(0, 0%, 95%)","backgroundColor":"hsl(0, 0%, 10%)","borderColor":"hsl(0, 0%, 16%)","borderWidth":"1px","highlightColor":"rgba(255, 255, 255, 0.1)","style":{"fontFamily":"Work Sans, Helvetica Neue, Helvetica, Arial, sans-serif","fontSize":"15px"}},"dataKey":"f053e82a1c4029e78ccb92d0e2810071"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>

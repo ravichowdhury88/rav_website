@@ -1,0 +1,119 @@
+---
+title: Simple React(Table)
+author: Ravi Chowdhury
+date: '2020-07-28'
+slug: simple-react-table
+categories:
+  - post
+tags:
+  - rmarkdown
+  - R
+  - reactable
+  - palmer penguins
+subtitle: ''
+summary: 'Create a simple table using reactable package'
+authors: []
+lastmod: '2020-07-28T14:15:26-05:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, comment = "#")
+library(tidyverse)
+library(tidylog)
+library(reactable)
+library(htmltools)
+```
+
+```{r, include=TRUE, echo=FALSE}
+penguin <- palmerpenguins::penguins
+```
+
+## Table
+Lets take a look at the table and see 10 observations
+```{r}
+head(penguin, 10)
+```
+
+## Creating Data Frame
+Lets group the penguins by species and then find the mean bill length for each species
+```{r}
+bill_len_df <- penguin %>%
+  group_by(species) %>%
+  summarise(mean_bill_length = mean(bill_length_mm, na.rm = T)) %>%
+  arrange(desc(mean_bill_length))
+
+bill_len_df
+```
+## Creating Reactable
+Now lets start making reactable, using the reactable package.
+
+```{css}
+.bar-cell {
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  font-size: 15px;
+  white-space: pre;
+  font-family: Source Code Pro, Consolas, Monaco, monospace;
+  font-weight: 600;
+  color: hsl(0, 0%, 70%)
+}
+
+.bar-chart {
+  flex-grow: 1;
+  margin-left: 6px;
+  height: 22px;
+}
+
+.bar {
+  height: 100%;
+}
+```
+
+```{r}
+
+reactable(bill_len_df, 
+          highlight = TRUE,
+          striped = TRUE,
+          theme = reactableTheme(
+            color = "hsl(0, 0%, 95%)",
+            backgroundColor = "hsl(0, 0%, 10%)",
+            borderColor = "hsl(0, 0%, 16%)",
+            borderWidth = "1px",
+            highlightColor = "rgba(255, 255, 255, 0.1)",
+            style = list(
+              fontFamily = "Work Sans, Helvetica Neue, Helvetica, Arial, sans-serif",
+              fontSize = "15px"
+            )
+          ),
+          columns = list(
+           mean_bill_length = colDef(
+             name = "Average Bill Length",
+             cell = function(value) {
+               width <- paste0(value *  100 / max(bill_len_df$mean_bill_length), "%")
+               value <- format(value, big.mark = ",")
+               value <- format(value, width = 5, justify = "right")
+               bar <- div(
+                 class = "bar-chart",
+                 style = list(marginRight = "6px"),
+                 div(
+                   class = "bar",
+                   style = list(width = width, backgroundColor = "#f61067")
+                 )
+               )
+               div(class = "bar-cell", span(class = "number", value), bar)
+             }
+           )
+         )
+           )
+
+```

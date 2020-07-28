@@ -1,7 +1,7 @@
 ---
 authors:
 - ravi
-bio: I'm a research data analyst, former NIH Principal Investigator, and autism researcher who loves programming.
+bio: I'm a Research Data Analyst , I love programming with R and working on data visualization.
 education:
   courses:
   - course: MPH in Epidemiology & Biostatistics
