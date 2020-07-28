@@ -24,12 +24,10 @@ date_format = "January 2006"
   location = "Chicago, IL"
   date_start = "2019-04-01"
   date_end = ""
-  description = 
-  """ 
+  description = """ 
   * Performed database management of multiple complex databases
   * Maintained data integrity of multiple databases along with establishing data accuracy and validity from a variety of systems
-  * Performed data analysis using various statistical techniques as well as analyzed information from multiple databases and created reports
-  """
+  * Performed data analysis using various statistical techniques as well as analyzed information from multiple databases and created reports"""
 
 [[experience]]
   title = "Data Analyst"
