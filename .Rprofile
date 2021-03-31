@@ -3,10 +3,11 @@ if (file.exists("~/.Rprofile")) {
 }
 
 options(
-  blogdown.author = "Alison Hill",
+  blogdown.author = "Ravi Chowdhury",
   blogdown.ext = ".Rmd",
   blogdown.subdir = "post",
   blogdown.yaml.empty = TRUE,
   blogdown.new_bundle = TRUE,
-  blogdown.title_case = TRUE
+  blogdown.title_case = TRUE,
+  blogdown.hugo.version = "0.82.0"
 )
