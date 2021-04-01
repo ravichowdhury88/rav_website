@@ -9,8 +9,8 @@ tags:
   - dplyr
   - tidyverse
   - R
-subtitle: 'Summarize NA''s across columns using dplyr (across) function'
-summary: ''
+subtitle: ''
+summary: 'Summarize NA''s across columns using dplyr (across) function'
 authors: []
 lastmod: '`r Sys.time()`'
 featured: no
