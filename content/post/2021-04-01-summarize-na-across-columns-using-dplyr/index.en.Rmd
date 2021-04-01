@@ -1,0 +1,76 @@
+---
+title: Summarize NA's 
+author: Ravi Chowdhury
+date: '2021-04-01'
+slug: summarize-na
+categories:
+  - post
+tags:
+  - dplyr
+  - tidyverse
+  - R
+subtitle: 'Summarize NA''s across columns using dplyr (across) function'
+summary: ''
+authors: []
+lastmod: '`r Sys.time()`'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, comment = "#")
+library(tidyverse)
+library(tidylog)
+```
+
+```{r, include=TRUE, echo=FALSE}
+penguin <- palmerpenguins::penguins
+```
+
+## Exploring the table
+We will use the palmerpenguins data from the `palmerpenguins` package.
+
+```{r}
+penguin %>% slice_head(n = 10)
+```
+
+`slice_head` is a function from `dplyr` package, that shows the top `n` rows in the dataset. In this case we are just looking at top 10 row.
+
+Since `dplyr` version 1.0.0 there has been a new function `across`. This function basically allows you to apply a function across different columns. The `across` function is very powerful and it can be used in various way. For today we will just use this function to summarize missing values `NA` from our dataset. For more information about `across` click **[here](https://dplyr.tidyverse.org/reference/across.html)**
+
+```{r}
+penguin %>% 
+  summarise(across(.cols = everything(), ~ sum(is.na(.))))
+```
+`.cols` is a `tidy-select` argument, so you can basically use it in multiple ways e.g based on location of column `3:5`
+```{r}
+penguin %>% 
+  summarise(across(.cols = 3:5, ~ sum(is.na(.))))
+```
+or specify the column name
+```{r}
+penguin %>% 
+  summarise(across(.cols = c(bill_length_mm, bill_depth_mm, flipper_length_mm), ~ sum(is.na(.))))
+```
+or matching name patterns like `ends_with("mm")`
+```{r}
+penguin %>% 
+  summarise(across(.cols = ends_with("mm"), ~ sum(is.na(.))))
+```
+or you can also pass a character vector
+```{r}
+cols_to_pull <- c("bill_length_mm", "bill_depth_mm", "flipper_length_mm")
+penguin %>% 
+  summarise(across(.cols = all_of(cols_to_pull), ~ sum(is.na(.))))
+```
+These are some of the ways you can use the `.cols` argument. The `~` after that is basically the function that you want to apply to those columns. In this case we just want to `sum` all the `NA's` in the columns.
+
+
+
+
+
+

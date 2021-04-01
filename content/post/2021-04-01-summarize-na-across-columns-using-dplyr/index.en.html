@@ -1,0 +1,84 @@
+---
+title: Summarize NA's 
+author: Ravi Chowdhury
+date: '2021-04-01'
+slug: summarize-na
+categories:
+  - post
+tags:
+  - dplyr
+  - tidyverse
+  - R
+subtitle: 'Summarize NA''s across columns using dplyr (across) function'
+summary: ''
+authors: []
+lastmod: '2021-04-01 17:36:08'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="exploring-the-table" class="section level2">
+<h2>Exploring the table</h2>
+<p>We will use the palmerpenguins data from the <code>palmerpenguins</code> package.</p>
+<pre class="r"><code>penguin %&gt;% slice_head(n = 10)</code></pre>
+<pre><code># # A tibble: 10 x 8
+#    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+#    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+#  1 Adelie  Torgersen           39.1          18.7               181        3750
+#  2 Adelie  Torgersen           39.5          17.4               186        3800
+#  3 Adelie  Torgersen           40.3          18                 195        3250
+#  4 Adelie  Torgersen           NA            NA                  NA          NA
+#  5 Adelie  Torgersen           36.7          19.3               193        3450
+#  6 Adelie  Torgersen           39.3          20.6               190        3650
+#  7 Adelie  Torgersen           38.9          17.8               181        3625
+#  8 Adelie  Torgersen           39.2          19.6               195        4675
+#  9 Adelie  Torgersen           34.1          18.1               193        3475
+# 10 Adelie  Torgersen           42            20.2               190        4250
+# # ... with 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<p><code>slice_head</code> is a function from <code>dplyr</code> package, that shows the top <code>n</code> rows in the dataset. In this case we are just looking at top 10 row.</p>
+<p>Since <code>dplyr</code> version 1.0.0 there has been a new function <code>across</code>. This function basically allows you to apply a function across different columns. The <code>across</code> function is very powerful and it can be used in various way. For today we will just use this function to summarize missing values <code>NA</code> from our dataset. For more information about <code>across</code> click <strong><a href="https://dplyr.tidyverse.org/reference/across.html">here</a></strong></p>
+<pre class="r"><code>penguin %&gt;% 
+  summarise(across(.cols = everything(), ~ sum(is.na(.))))</code></pre>
+<pre><code># # A tibble: 1 x 8
+#   species island bill_length_mm bill_depth_mm flipper_length_~ body_mass_g   sex
+#     &lt;int&gt;  &lt;int&gt;          &lt;int&gt;         &lt;int&gt;            &lt;int&gt;       &lt;int&gt; &lt;int&gt;
+# 1       0      0              2             2                2           2    11
+# # ... with 1 more variable: year &lt;int&gt;</code></pre>
+<p><code>.cols</code> is a <code>tidy-select</code> argument, so you can basically use it in multiple ways e.g based on location of column <code>3:5</code></p>
+<pre class="r"><code>penguin %&gt;% 
+  summarise(across(.cols = 3:5, ~ sum(is.na(.))))</code></pre>
+<pre><code># # A tibble: 1 x 3
+#   bill_length_mm bill_depth_mm flipper_length_mm
+#            &lt;int&gt;         &lt;int&gt;             &lt;int&gt;
+# 1              2             2                 2</code></pre>
+<p>or specify the column name</p>
+<pre class="r"><code>penguin %&gt;% 
+  summarise(across(.cols = c(bill_length_mm, bill_depth_mm, flipper_length_mm), ~ sum(is.na(.))))</code></pre>
+<pre><code># # A tibble: 1 x 3
+#   bill_length_mm bill_depth_mm flipper_length_mm
+#            &lt;int&gt;         &lt;int&gt;             &lt;int&gt;
+# 1              2             2                 2</code></pre>
+<p>or matching name patterns like <code>ends_with("mm")</code></p>
+<pre class="r"><code>penguin %&gt;% 
+  summarise(across(.cols = ends_with(&quot;mm&quot;), ~ sum(is.na(.))))</code></pre>
+<pre><code># # A tibble: 1 x 3
+#   bill_length_mm bill_depth_mm flipper_length_mm
+#            &lt;int&gt;         &lt;int&gt;             &lt;int&gt;
+# 1              2             2                 2</code></pre>
+<p>or you can also pass a character vector</p>
+<pre class="r"><code>cols_to_pull &lt;- c(&quot;bill_length_mm&quot;, &quot;bill_depth_mm&quot;, &quot;flipper_length_mm&quot;)
+penguin %&gt;% 
+  summarise(across(.cols = all_of(cols_to_pull), ~ sum(is.na(.))))</code></pre>
+<pre><code># # A tibble: 1 x 3
+#   bill_length_mm bill_depth_mm flipper_length_mm
+#            &lt;int&gt;         &lt;int&gt;             &lt;int&gt;
+# 1              2             2                 2</code></pre>
+<p>These are some of the ways you can use the <code>.cols</code> argument. The <code>~</code> after that is basically the function that you want to apply to those columns. In this case we just want to <code>sum</code> all the <code>NA's</code> in the columns.</p>
+</div>
