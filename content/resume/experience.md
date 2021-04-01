@@ -29,7 +29,6 @@ date_format = "January 2006"
   <br>* Maintained data integrity of multiple databases along with establishing data accuracy and validity from a variety of systems
   <br>* Performed data analysis using various statistical techniques as well as analyzed information from multiple databases and created reports
   <br>* Assisted in the preparation and delivery of decision support reports for both internal and external customers
-  
   """
 
 [[experience]]
@@ -51,7 +50,10 @@ date_format = "January 2006"
   location = "Chicago, Illinois"
   date_start = "2017-05-01"
   date_end = "2017-10-30"
-  description = """ """
+  description = """ 
+  <br> * Standardized data collected for UIC cohort study
+  <br> * Analyzed and Interpreted data leading to qualitative research and analysis
+  """
 
 [[experience]]
   title = "Administrator"
@@ -60,7 +62,11 @@ date_format = "January 2006"
   location = "Mumbai, India"
   date_start = "2013-03-01"
   date_end = "2016-06-30"
-  description = """ """
+  description = """ 
+  <br> * Pioneered affordable diabetes self-management tools and screenings
+  <br> * Analyzed and evaluated patient database
+  <br> * Expanded community outreach through communication and education marketing
+  """
 
 [[experience]]
   title = "Consulting Homeopathic Physician"
@@ -69,7 +75,11 @@ date_format = "January 2006"
   location = "Mumbai, India"
   date_start = "2012-03-01"
   date_end = "2016-06-30"
-  description = """ """
+  description = """ 
+  <br> * Developed 15 Diabetes Education seminars for the general public
+  <br> * Managed a patient load of 10 patients per day
+  <br> * Provided personal Homeopathic counselling to patients
+  """
 
 [[experience]]
   title = "Visiting Homeopathic Physician"
@@ -78,6 +88,9 @@ date_format = "January 2006"
   location = "Mumbai, India"
   date_start = "2014-05-01"
   date_end = "2016-06-30"
-  description = """ """
+  description = """ 
+  <br> * Implemented regular routine health checkups
+  <br> * Managed physical illnessess in patients, predominately children and women
+  """
 
 +++
