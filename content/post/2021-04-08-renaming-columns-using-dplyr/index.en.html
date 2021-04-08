@@ -1,0 +1,95 @@
+---
+title: Renaming columns
+author: Ravi Chowdhury
+date: '2021-04-08'
+slug: renaming-columns
+categories: []
+tags: []
+subtitle: ''
+summary: 'Using rename function in dplyr'
+authors: []
+lastmod: '2021-04-08 14:29:24'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="for-renaming-columns-with-dplyr-we-can-use-the-rename-rename_with-function." class="section level2">
+<h2>For renaming columns with dplyr we can use the <code>rename</code> &amp; <code>rename_with</code> function.</h2>
+<p>The <code>rename</code> function works as follows new_col = old_col_name where new_col is the new name for the existing column (old_col_name)</p>
+</div>
+<div id="exploring-the-table" class="section level2">
+<h2>Exploring the table</h2>
+<p>We will use the palmerpenguins data from the <code>palmerpenguins</code> package.</p>
+<pre class="r"><code>penguin %&gt;% colnames()</code></pre>
+<pre><code># [1] &quot;species&quot;           &quot;island&quot;            &quot;bill_length_mm&quot;   
+# [4] &quot;bill_depth_mm&quot;     &quot;flipper_length_mm&quot; &quot;body_mass_g&quot;      
+# [7] &quot;sex&quot;               &quot;year&quot;</code></pre>
+<p>For just simple renaming of columns use the <code>rename</code> function</p>
+<pre class="r"><code>penguin %&gt;% 
+  rename(species_penguin = species) %&gt;% 
+  colnames()</code></pre>
+<pre><code># [1] &quot;species_penguin&quot;   &quot;island&quot;            &quot;bill_length_mm&quot;   
+# [4] &quot;bill_depth_mm&quot;     &quot;flipper_length_mm&quot; &quot;body_mass_g&quot;      
+# [7] &quot;sex&quot;               &quot;year&quot;</code></pre>
+<p>We can also pass multiple columns</p>
+<pre class="r"><code>penguin %&gt;% 
+  rename(
+    species_penguins = species,
+    island_penguins = island,
+    sex_penguin = sex
+  ) %&gt;% 
+  colnames()</code></pre>
+<pre><code># [1] &quot;species_penguins&quot;  &quot;island_penguins&quot;   &quot;bill_length_mm&quot;   
+# [4] &quot;bill_depth_mm&quot;     &quot;flipper_length_mm&quot; &quot;body_mass_g&quot;      
+# [7] &quot;sex_penguin&quot;       &quot;year&quot;</code></pre>
+<p><code>rename_with</code> function in <code>dplyr</code> is a much more powerful function that can be used to rename columns by passing a function to it. You can pass the <code>.cols</code> argument as well as the <code>.fn</code> argument to this function. <code>.cols</code> is a <code>tidyselect</code> function which opens various way of selecting columns like <code>last_col</code>, <code>any_of</code>, <code>all_of</code>, <code>everything</code> , <code>c()</code>, <code>starts_with</code> etc and <code>.fn</code> is used to pass a function to it.</p>
+<p>Renaming all columns to uppercase</p>
+<pre class="r"><code>penguin %&gt;% 
+  rename_with(
+    .fn = ~ toupper(.),
+    .cols = everything()
+  ) %&gt;% 
+  colnames()</code></pre>
+<pre><code># [1] &quot;SPECIES&quot;           &quot;ISLAND&quot;            &quot;BILL_LENGTH_MM&quot;   
+# [4] &quot;BILL_DEPTH_MM&quot;     &quot;FLIPPER_LENGTH_MM&quot; &quot;BODY_MASS_G&quot;      
+# [7] &quot;SEX&quot;               &quot;YEAR&quot;</code></pre>
+<p>Rename just the columns that end with “mm”.</p>
+<pre class="r"><code>penguin %&gt;% 
+  rename_with(
+    .fn = ~ toupper(.),
+    .cols = ends_with(&quot;mm&quot;)
+  ) %&gt;% 
+  colnames()</code></pre>
+<pre><code># [1] &quot;species&quot;           &quot;island&quot;            &quot;BILL_LENGTH_MM&quot;   
+# [4] &quot;BILL_DEPTH_MM&quot;     &quot;FLIPPER_LENGTH_MM&quot; &quot;body_mass_g&quot;      
+# [7] &quot;sex&quot;               &quot;year&quot;</code></pre>
+<p>Also we don’t have to specify <code>.cols</code> and <code>.fn</code> argument, you can just pass the argument without specifying the, just make sure to maintain the order. The <code>.fn</code> argument followed by the <code>.cols</code> argument.</p>
+<pre class="r"><code>penguin %&gt;% 
+  rename_with(
+    ~ toupper(.),
+    ends_with(&quot;mm&quot;)
+  ) %&gt;% 
+  colnames()</code></pre>
+<pre><code># [1] &quot;species&quot;           &quot;island&quot;            &quot;BILL_LENGTH_MM&quot;   
+# [4] &quot;BILL_DEPTH_MM&quot;     &quot;FLIPPER_LENGTH_MM&quot; &quot;body_mass_g&quot;      
+# [7] &quot;sex&quot;               &quot;year&quot;</code></pre>
+<p>We can also use the wonderful <code>glue</code> package to add a prefix / suffix to the column names.</p>
+<pre class="r"><code>penguin %&gt;%
+  rename_with(
+    ~ glue::glue(&quot;{.}_penguin&quot;),
+    ends_with(&quot;mm&quot;)
+  ) %&gt;% 
+  colnames()</code></pre>
+<pre><code># [1] &quot;species&quot;                   &quot;island&quot;                   
+# [3] &quot;bill_length_mm_penguin&quot;    &quot;bill_depth_mm_penguin&quot;    
+# [5] &quot;flipper_length_mm_penguin&quot; &quot;body_mass_g&quot;              
+# [7] &quot;sex&quot;                       &quot;year&quot;</code></pre>
+<p>These are some of the ways to rename columns using <code>rename</code> and <code>rename_with</code> function using <code>dplyr</code>. For more details about the function please visit the <strong><a href="https://dplyr.tidyverse.org/reference/rename.html">tidyverse</a></strong> website.</p>
+</div>

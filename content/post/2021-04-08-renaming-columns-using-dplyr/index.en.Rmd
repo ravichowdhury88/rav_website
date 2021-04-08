@@ -1,0 +1,107 @@
+---
+title: Renaming columns
+author: Ravi Chowdhury
+date: '2021-04-08'
+slug: renaming-columns
+categories: []
+tags: []
+subtitle: ''
+summary: 'Using rename function in dplyr'
+authors: []
+lastmod: '`r Sys.time()`'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, comment = "#")
+library(tidyverse)
+library(tidylog)
+```
+
+## For renaming columns  with  dplyr we can use the ` rename`  &  `rename_with`  function.
+
+
+The `rename` function works as follows new_col = old_col_name where new_col is the new name for the existing column (old_col_name)
+
+```{r, include=TRUE, echo=FALSE}
+penguin <- palmerpenguins::penguins
+```
+
+## Exploring the table
+We will use the palmerpenguins data from the `palmerpenguins` package.
+
+```{r}
+penguin %>% colnames()
+```
+
+For just simple renaming of columns use the `rename` function
+```{r}
+penguin %>% 
+  rename(species_penguin = species) %>% 
+  colnames()
+```
+We can also pass multiple columns 
+
+```{r}
+penguin %>% 
+  rename(
+    species_penguins = species,
+    island_penguins = island,
+    sex_penguin = sex
+  ) %>% 
+  colnames()
+```
+`rename_with` function in `dplyr` is a much more powerful function that can be used to rename columns by passing a function to it. You can pass the `.cols` argument as well as the `.fn` argument to this function. `.cols` is a `tidyselect` function which opens various way of selecting columns like `last_col`, `any_of`, `all_of`, `everything` , `c()`, `starts_with` etc and `.fn` is used to pass a function to it.
+
+Renaming all columns to uppercase
+
+```{r}
+penguin %>% 
+  rename_with(
+    .fn = ~ toupper(.),
+    .cols = everything()
+  ) %>% 
+  colnames()
+```
+Rename just the columns that end with "mm".
+```{r}
+penguin %>% 
+  rename_with(
+    .fn = ~ toupper(.),
+    .cols = ends_with("mm")
+  ) %>% 
+  colnames()
+```
+Also we don't have to specify `.cols` and `.fn` argument, you can just pass the argument without specifying the, just make sure to maintain the order. The `.fn` argument followed by the `.cols` argument. 
+
+```{r}
+penguin %>% 
+  rename_with(
+    ~ toupper(.),
+    ends_with("mm")
+  ) %>% 
+  colnames()
+```
+We can also use the wonderful `glue` package to add a prefix / suffix to the column names.
+```{r}
+penguin %>%
+  rename_with(
+    ~ glue::glue("{.}_penguin"),
+    ends_with("mm")
+  ) %>% 
+  colnames()
+```
+
+These are some of the ways to rename columns using `rename` and `rename_with` function using `dplyr`. For more details about the function please visit the **[tidyverse](https://dplyr.tidyverse.org/reference/rename.html)**  website.
+
+
+
+
+
+
+
