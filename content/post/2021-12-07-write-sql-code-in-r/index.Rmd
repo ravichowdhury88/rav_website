@@ -1,0 +1,37 @@
+---
+title: Write SQL Code in R
+author: Ravi Chowdhury
+date: '2021-12-07'
+slug: []
+categories:
+  - post
+tags:
+  - R
+  - SQL
+  - glue
+  - reproducible
+subtitle: ''
+summary: 'Writing Reproducible and Repetitive SQL code in R'
+authors: []
+lastmod: '2021-12-07T15:50:43-06:00'
+featured: no
+draft: no
+disable_jquery: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, comment = "#")
+library(tidyverse)
+library(tidylog)
+```
+
+#### In this post we will see how to write repetitive SQL code in R
+```{r}
+
+```
+
